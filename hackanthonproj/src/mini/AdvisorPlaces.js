@@ -29,6 +29,7 @@ const location=[[{
 }]]
 const AdvisorPlaces = () => {
     const {data}=useContext(context)
+    // console.log("datalalala",JSON.parse(data?.data))
   return (
     <div className='bg-slate-100 w-3/4 mt-10 min-h-80 '>
         <div className=' text-xl font-mono font-bold px-4 py-4'>Make Your Path</div>
