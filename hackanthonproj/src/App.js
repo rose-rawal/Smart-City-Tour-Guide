@@ -4,10 +4,14 @@ import {Route,Routes} from "react-router-dom"
 import './App.css';
 import URL from './utils';
 import Context from './context/context';
+import Header from './layout';
 function App() {
   return (
     <div className="App">
       <Context>
+      
+      <Header/>
+      <div className=' h-16'></div>
       <Routes>
     {URL.map((item)=>{
         return(
