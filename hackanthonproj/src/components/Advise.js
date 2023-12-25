@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import AdvisorPlaces from '../mini/AdvisorPlaces'
-
+import axios from 'axios'
+import context from '../context/maincontext';
 const Advise = () => {
-    const [searchPlace,setSearchPlace]=useState('')
-    const handleClick=(e)=>{
-        e.preventDefault();
-        console.log("search Place",searchPlace)
-    }
+
+   const {searchPlace,setSearchPlace,handleClick}=useContext(context);
   return (
     <div className='flex flex-col items-center'>
         <div className='pt-10 text-2xl font-bold mb-10'>Prepare a Plan</div>
