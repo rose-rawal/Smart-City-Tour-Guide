@@ -1,6 +1,7 @@
 import Login from "../components/Login";
 import Home from "../components/Home";
 import { NearMe } from "../components/NearMe";
+import SignUp from "../components/SignUp";
 const URL = [
   {
     name: "Home",
@@ -16,6 +17,11 @@ const URL = [
     name: "Near",
     element: <NearMe />,
     path: "/nearme",
+  },
+  {
+    name: "SignUp",
+    element: <SignUp />,
+    path: "/signUp",
   },
 ];
 
