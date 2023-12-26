@@ -53,7 +53,7 @@ const Payment = () => {
         <ul className="flex justify-around pt-48">
           <li
             className="bg-slate-100 rounded-xl px-3 py-2 hover:bg-slate-200 transition-all"
-            onClick={(e) => handlePayment(e, 500)}
+            onClick={(e) => handlePayment(e, 4500)}
           >
             <div className="w-40 h-40 overflow-hidden rounded-xl">
               <div className=" bg-yellow-400 hover:bg-yellow-300 transition-all w-full h-full rounded-xl text-3xl flex justify-center items-center hover:scale-125 ">
@@ -62,7 +62,7 @@ const Payment = () => {
             </div>
             <div className="text-xl">Gold</div>
             <div>1 Month Access</div>
-            <div>NRs. 50</div>
+            <div>NRs. 450</div>
           </li>
           <li
             className="bg-slate-100 rounded-xl px-3 py-2 hover:bg-slate-200 transition-all"
@@ -79,7 +79,7 @@ const Payment = () => {
           </li>
           <li
             className="bg-slate-100 rounded-xl px-3 py-2 hover:bg-slate-200 transition-all"
-            onClick={(e) => handlePayment(e, 4500)}
+            onClick={(e) => handlePayment(e, 500)}
           >
             <div className="w-40 h-40 overflow-hidden rounded-xl">
               <div className="bg-yellow-800 hover:bg-yellow-700 transition-all w-full h-full rounded-xl text-3xl flex justify-center items-center hover:scale-125 ">
@@ -88,7 +88,7 @@ const Payment = () => {
             </div>
             <div className="text-xl">Gold</div>
             <div>1 Year Access</div>
-            <div>NRs. 450</div>
+            <div>NRs. 50</div>
           </li>
         </ul>
       </div>

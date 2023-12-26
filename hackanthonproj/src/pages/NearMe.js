@@ -74,7 +74,7 @@ export const NearMe = () => {
   return (
     <div className="container mx-auto p-8">
       <h1 className="text-3xl font-semibold mb-4">Location Component</h1>
-      <div className="flex items-center space-x-4 mb-4">
+      <div className="flex items-center space-x-4 mb-4 justify-center">
         <input
           className="border border-gray-300 px-4 py-2 rounded-md w-64 focus:outline-none focus:border-blue-500"
           onChange={(e) => onInputChangeHandler(e)}
@@ -86,17 +86,6 @@ export const NearMe = () => {
           onClick={sendChatGpt}
         >
           Send
-        </button>
-        <button
-          className="bg-green-500 text-white px-4 py-2 rounded-md flex items-center hover:bg-green-600 transition duration-300"
-          onClick={requestLocation}
-        >
-          <FontAwesomeIcon
-            className="mr-2"
-            icon={faMapMarker}
-            style={{ color: "#cfc03a" }}
-          />{" "}
-          Near Me
         </button>
       </div>
       {loading && <Loader />}

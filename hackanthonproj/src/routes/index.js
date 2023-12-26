@@ -5,6 +5,7 @@ import Advise from "../pages/Advise";
 import Payment from "../pages/Payment";
 import SignUp from "../pages/SignUp";
 import Loader from "../pages/Loader";
+import Hotels from "../pages/Hotels";
 const URL = [
   {
     name: "Home",
@@ -35,6 +36,11 @@ const URL = [
     name: "SignUp",
     element: <SignUp />,
     path: "/signUp",
+  },
+  {
+    name: "Hotels",
+    element: <Hotels />,
+    path: "/hotels",
   },
 ];
 
