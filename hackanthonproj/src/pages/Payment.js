@@ -19,23 +19,25 @@ const Payment = () => {
     };
 
     try {
+      console.log("hello");
       const response = await axios.post(
         "http://localhost:8000/payment/khalti-api",
-        payload
+        { payload, loginData }
       );
       if (response) {
         console.log("response:: ", response);
         // window.location.href = `${response?.data?.payment_url}`;
-        console.log(loginData);
-        try {
-          const resp1 = await axios.post(
-            "http://localhost:3000/user/updateSubscription",
-            loginData
-          );
-          console.log(resp1);
-        } catch (err) {
-          console.log("Err while updating subsribe", err);
-        }
+        // console.log("resp",response);
+        // try {
+        //   const resp1 = await axios.post(
+        //     "http://localhost:3000/user/updateSubscription",
+        //     loginData
+        //   );
+        //   console.log(resp1);
+        // } catch (err) {
+        //   console.log("Err while updating subsribe", err);
+        // }
+        console.log(response?.data?.data?.payment_url);
         window.location.href = `${response?.data?.data?.payment_url}`;
 
         // console.log(response?.data?.payment_url)

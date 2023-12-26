@@ -91,7 +91,10 @@ const Context = ({ children }) => {
     e.preventDefault();
     console.log("search Place", searchPlace);
     axios
-      .post("http://localhost:8000/advise/get", { location: searchPlace })
+      .post("http://localhost:8000/advise/get", {
+        location: searchPlace,
+        email: loginData.email,
+      })
       .then((val) => {
         setData(val);
         console.log("val", val.data);
