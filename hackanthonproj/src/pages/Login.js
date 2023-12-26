@@ -5,21 +5,15 @@ import { item, container } from "../assets/animation";
 import context from "../context/maincontext";
 import loginimg from "../images/Login.jpg";
 
-const initialLoginData = {
-  email: "",
-  password: "",
-};
-
 const Login = () => {
-  const { loginUser } = useContext(context);
-  const navigate= useNavigate();
+  const { loginUser, setIsLoggedIn, loginData, setLoginData } =
+    useContext(context);
+  const navigate = useNavigate();
   const [error, setError] = useState({
     errorText: "",
     infoText: "",
     field: "",
   });
-
-  const [loginData, setLoginData] = useState(initialLoginData);
 
   const updateLoginData = (value, key = "name") => {
     setLoginData((prev) => ({
@@ -45,15 +39,13 @@ const Login = () => {
         errorText: "",
         field: "",
       });
+      setIsLoggedIn(true);
+
       navigate("/");
     }
   };
 
   return (
-    <>
-     <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
-          <div className="animate-pulse rounded-full border-8 border-t-8 border-gray-200 h-20 w-20"></div>
-     </div> 
     <motion.div
       className="flex h-screen w-screen absolute"
       initial={{ x: "50%" }}
@@ -98,7 +90,7 @@ const Login = () => {
                 id="email"
                 placeholder="Email"
                 className="w-full p-2 border-b"
-                value={loginData.email}
+                value={loginData?.email}
                 error={error.field === "email" && error.errorText}
                 onChange={(e) => updateLoginData(e.target.value, "email")}
               />
@@ -109,7 +101,7 @@ const Login = () => {
                 id="password"
                 placeholder="Password"
                 className="w-full p-2 border-b"
-                value={loginData.password}
+                value={loginData?.password}
                 error={error.field === "password" && error.errorText}
                 onChange={(e) => updateLoginData(e.target.value, "password")}
               />
@@ -146,7 +138,6 @@ const Login = () => {
         />
       </div>
     </motion.div>
-    </>
   );
 };
 
