@@ -67,32 +67,49 @@ export const NearMe = () => {
     setChatValue(e.target.value);
   };
   return (
-    <div>
-      <div>
-        {/* {matches.map((match) => {
-          const title = match.replace(/\d+\.\s/, "").trim();
+    <div className="container mx-auto p-8">
+      <h1 className="text-3xl font-semibold mb-4">Location Component</h1>
+      <div className="flex items-center space-x-4 mb-4">
+        <input
+          className="border border-gray-300 px-4 py-2 rounded-md w-64 focus:outline-none focus:border-blue-500"
+          onChange={(e) => onInputChangeHandler(e)}
+          placeholder="Enter location"
+        />
 
-          return <div>{match}</div>;
-        })} */}
-        {touch !== null && <div>{locations[touch]?.description}</div>}
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300"
+          onClick={sendChatGpt}
+        >
+          Send
+        </button>
+        <button
+          className="bg-green-500 text-white px-4 py-2 rounded-md flex items-center hover:bg-green-600 transition duration-300"
+          onClick={requestLocation}
+        >
+          <FontAwesomeIcon
+            className="mr-2"
+            icon={faMapMarker}
+            style={{ color: "#cfc03a" }}
+          />{" "}
+          Near Me
+        </button>
       </div>
-      <h1>Location Component</h1>
-      <input onChange={(e) => onInputChangeHandler(e)} />
-      <button onClick={sendChatGpt}>Send</button>
-      <button onClick={requestLocation}>
-        <FontAwesomeIcon icon={faMapMarker} style={{ color: "#cfc03a" }} /> Near
-        Me
-      </button>
-
       {userLocation && (
         <div>
           <p>Latitude: {userLocation.latitude}</p>
           <p>Longitude: {userLocation.longitude}</p>
         </div>
       )}
-      {response.map((element) => (
-        <div className="flex flex-row space-x-2">{element}</div>
-      ))}
+      <div className="flex flex-col space-y-4">
+        {response.map((element, index) => (
+          <div
+            key={index}
+            className="flex flex-row items-center p-4 bg-gray-100 rounded-lg shadow-md  justify-center"
+          >
+            <div className="text-blue-800">{element}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
