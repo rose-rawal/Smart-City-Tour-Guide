@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarker } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import Loader from "./Loader";
 
 export const NearMe = () => {
   const [touch, setTouch] = useState();
@@ -11,6 +12,7 @@ export const NearMe = () => {
   const [userLocation, setUserLocation] = useState(null);
   const titleRegex = /\d+\.\s([^:]+)/g;
   let str;
+  const [loading, setLoading] = useState(false);
 
   let locations = [
     {
@@ -28,6 +30,7 @@ export const NearMe = () => {
   ];
 
   const sendChatGpt = async () => {
+    setLoading(true);
     try {
       const result = await axios.post("http://localhost:8000/near/getData", {
         location: chatValue,
@@ -36,6 +39,8 @@ export const NearMe = () => {
       setResponse(result.data.split("\n"));
     } catch (err) {
       console.log("err in getting chat gpt", err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -94,19 +99,20 @@ export const NearMe = () => {
           Near Me
         </button>
       </div>
+      {loading && <Loader />}
       {userLocation && (
         <div>
           <p>Latitude: {userLocation.latitude}</p>
           <p>Longitude: {userLocation.longitude}</p>
         </div>
       )}
-      <div className="flex flex-col space-y-4">
+      <div className="flex flex-col space-y-4 bg-gray-100">
         {response.map((element, index) => (
           <div
             key={index}
             className="flex flex-row items-center p-4 bg-gray-100 rounded-lg shadow-md  justify-center"
           >
-            <div className="text-blue-800">{element}</div>
+            <div>{element}</div>
           </div>
         ))}
       </div>
